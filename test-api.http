@@ -1,0 +1,41 @@
+GET http://localhost:8000/api/v1/users/necko
+Accept: application/json
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+###
+
+POST http://localhost:8000/api/v1/users/register
+Content-Type: application/json
+
+{
+  "username": "necko",
+  "password": "12345678",
+  "email": "necko@gmail.com"
+}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201 | " + response.status);
+});
+%}
+
+###
+
+POST http://localhost:8000/api/v1/users/register
+Content-Type: application/json
+
+{
+  "username": "necko",
+  "email": "necko@gmail.com"
+}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 400,  "Response status is not 400 | " + response.status);
+});
+%}

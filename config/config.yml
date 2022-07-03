@@ -1,0 +1,21 @@
+http:
+  port: '8000'
+
+app:
+  name: 'Todo App'
+  version: '1.0.0'
+
+secret:
+  key: 'some_secret_key_123'
+  salt: 'password_salt'
+
+logger:
+  level: 'debug'
+
+db:
+  url:  'mongodb://localhost:27017'
+  database: 'todo_app'
+
+auth:
+  accessTokenTTL: '120m'
+  refreshTokenTTL: '43200m' #30 days
